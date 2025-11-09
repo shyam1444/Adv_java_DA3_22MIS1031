@@ -2,8 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
     <title>Student Registration</title>
@@ -13,46 +12,70 @@
                background:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);
                display:flex;justify-content:center;align-items:center;
                min-height:100vh;padding:20px;">
+
     <div style="max-width:600px;width:100%;background:white;border-radius:12px;
                 box-shadow:0 10px 30px rgba(0,0,0,0.1);padding:2rem;">
+
         <h2 style="text-align:center;color:#667eea;margin-bottom:1rem;">
             📝 Student Registration
         </h2>
 
         <h:form id="regForm">
+
+            <!-- Full Name -->
             <h:outputLabel for="name" value="Full Name:"/><br/>
             <h:inputText id="name" value="#{studentBean.student.name}" required="true"
+                         requiredMessage="Full name is required!"
                          style="width:100%;padding:10px;margin-bottom:10px;
                                 border-radius:6px;border:1px solid #ccc;"/>
             <h:message for="name" style="color:red"/>
 
+            <!-- Email -->
             <h:outputLabel for="email" value="Email:"/><br/>
             <h:inputText id="email" value="#{studentBean.student.email}" required="true"
+                         requiredMessage="Email is required!"
                          style="width:100%;padding:10px;margin-bottom:10px;
-                                border-radius:6px;border:1px solid #ccc;"/>
+                                border-radius:6px;border:1px solid #ccc;">
+                <f:validateRegex pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$"
+                                 validatorMessage="Please enter a valid email address!"/>
+            </h:inputText>
             <h:message for="email" style="color:red"/>
 
+            <!-- Phone -->
             <h:outputLabel for="phone" value="Phone:"/><br/>
             <h:inputText id="phone" value="#{studentBean.student.phone}" required="true"
+                         requiredMessage="Phone number is required!"
                          style="width:100%;padding:10px;margin-bottom:10px;
-                                border-radius:6px;border:1px solid #ccc;"/>
+                                border-radius:6px;border:1px solid #ccc;">
+                <f:validateRegex pattern="^[6-9]\\d{9}$"
+                                 validatorMessage="Please enter a valid 10-digit phone number starting with 6–9!"/>
+            </h:inputText>
             <h:message for="phone" style="color:red"/>
 
+            <!-- Age -->
             <h:outputLabel for="age" value="Age:"/><br/>
             <h:inputText id="age" value="#{studentBean.student.age}" required="true"
+                         requiredMessage="Age is required!"
                          style="width:100%;padding:10px;margin-bottom:20px;
-                                border-radius:6px;border:1px solid #ccc;"/>
+                                border-radius:6px;border:1px solid #ccc;">
+                <f:convertNumber integerOnly="true" />
+                <f:validateLongRange minimum="18" maximum="25"
+                                     validatorMessage="Age must be between 18 and 25!"/>
+            </h:inputText>
             <h:message for="age" style="color:red"/>
 
-            <!-- ✅ Correct method call -->
+            <!-- Submit Button -->
             <h:commandButton value="Submit Registration"
-                             action="#{studentBean.saveStudent()}"
+                             action="#{studentBean.saveStudent}"
                              style="background:#4CAF50;color:white;padding:10px 20px;
-                                    border:none;border-radius:6px;width:100%;font-weight:600;"/>
+                                    border:none;border-radius:6px;width:100%;font-weight:600;
+                                    cursor:pointer;"/>
             <br/><br/>
+
+            <!-- Back Link -->
             <h:commandLink value="← Back to Home"
                            action="welcome.xhtml?faces-redirect=true"
-                           style="color:#667eea;text-decoration:none;"/>
+                           style="color:#667eea;text-decoration:none;display:block;text-align:center;"/>
         </h:form>
     </div>
 </h:body>
