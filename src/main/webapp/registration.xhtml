@@ -33,13 +33,13 @@
             </h:inputText>
             <h:message for="name" style="color:red; font-size:13px; display:block; margin-bottom:10px;"/>
 
-            <!-- ✅ EMAIL VALIDATION (letters/numbers + @ + letters only + .com) -->
             <h:outputLabel for="email" value="Email:"/><br/>
             <h:inputText id="email" value="#{studentBean.student.email}" required="true"
                          requiredMessage="Email is required."
                          style="width:100%;padding:10px;margin-bottom:5px;
                     border-radius:6px;border:1px solid #ccc;">
-                <f:validateRegex pattern="^[A-Za-z0-9._%+-]+@[A-Za-z]+\\.com$"
+                <!-- ✅ Fixed Regex: correctly handles the dot in .com -->
+                <f:validateRegex pattern="^[A-Za-z0-9._%+-]+@[a-z]+\.com$"
                                  message="Please enter a valid email (e.g., name@domain.com)"/>
             </h:inputText>
             <h:message for="email" style="color:red; font-size:13px; display:block; margin-bottom:10px;"/>
