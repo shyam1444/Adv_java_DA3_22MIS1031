@@ -66,11 +66,8 @@ The project includes JUnit 5 test cases with:
 4. Push to the branch
 5. Create a new Pull Request
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Author
-Shyam Venkatraman
+Shyam Venkatraman, 22MIS1031
 
 ## Last Updated
 November 9, 2025
