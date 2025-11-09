@@ -22,61 +22,67 @@
 
         <h:form id="regForm">
 
-            <!-- Full Name -->
+            <!-- ✅ FULL NAME (only letters & spaces allowed) -->
             <h:outputLabel for="name" value="Full Name:"/><br/>
             <h:inputText id="name" value="#{studentBean.student.name}" required="true"
-                         requiredMessage="Full name is required!"
-                         style="width:100%;padding:10px;margin-bottom:10px;
-                                border-radius:6px;border:1px solid #ccc;"/>
-            <h:message for="name" style="color:red"/>
+                         requiredMessage="Full name is required."
+                         style="width:100%;padding:10px;margin-bottom:5px;
+                        border-radius:6px;border:1px solid #ccc;">
+                <f:validateRegex pattern="^[A-Za-z ]+$"
+                                 message="Full name must contain only letters and spaces."/>
+            </h:inputText>
+            <h:message for="name" style="color:red; font-size:13px; display:block; margin-bottom:10px;"/>
 
-            <!-- Email -->
+            <!-- ✅ EMAIL VALIDATION -->
             <h:outputLabel for="email" value="Email:"/><br/>
             <h:inputText id="email" value="#{studentBean.student.email}" required="true"
-                         requiredMessage="Email is required!"
-                         style="width:100%;padding:10px;margin-bottom:10px;
-                                border-radius:6px;border:1px solid #ccc;">
+                         requiredMessage="Email is required."
+                         style="width:100%;padding:10px;margin-bottom:5px;
+                        border-radius:6px;border:1px solid #ccc;">
                 <f:validateRegex pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$"
-                                 validatorMessage="Please enter a valid email address!"/>
+                                 message="Please enter a valid email address."/>
             </h:inputText>
-            <h:message for="email" style="color:red"/>
+            <h:message for="email" style="color:red; font-size:13px; display:block; margin-bottom:10px;"/>
 
-            <!-- Phone -->
+            <!-- ✅ PHONE VALIDATION (10 digits, not starting with 0) -->
             <h:outputLabel for="phone" value="Phone:"/><br/>
             <h:inputText id="phone" value="#{studentBean.student.phone}" required="true"
-                         requiredMessage="Phone number is required!"
-                         style="width:100%;padding:10px;margin-bottom:10px;
-                                border-radius:6px;border:1px solid #ccc;">
-                <f:validateRegex pattern="^[6-9]\\d{9}$"
-                                 validatorMessage="Please enter a valid 10-digit phone number starting with 6–9!"/>
+                         requiredMessage="Phone number is required."
+                         style="width:100%;padding:10px;margin-bottom:5px;
+                        border-radius:6px;border:1px solid #ccc;">
+                <f:validateRegex pattern="^[1-9][0-9]{9}$"
+                                 message="Phone number must be 10 digits and cannot start with 0."/>
             </h:inputText>
-            <h:message for="phone" style="color:red"/>
+            <h:message for="phone" style="color:red; font-size:13px; display:block; margin-bottom:10px;"/>
 
-            <!-- Age -->
+            <!-- ✅ AGE VALIDATION (18–25) -->
             <h:outputLabel for="age" value="Age:"/><br/>
             <h:inputText id="age" value="#{studentBean.student.age}" required="true"
-                         requiredMessage="Age is required!"
-                         style="width:100%;padding:10px;margin-bottom:20px;
-                                border-radius:6px;border:1px solid #ccc;">
-                <f:convertNumber integerOnly="true" />
+                         requiredMessage="Age is required."
+                         style="width:100%;padding:10px;margin-bottom:5px;
+                        border-radius:6px;border:1px solid #ccc;">
                 <f:validateLongRange minimum="18" maximum="25"
-                                     validatorMessage="Age must be between 18 and 25!"/>
+                                     message="Age must be between 18 and 25."/>
             </h:inputText>
-            <h:message for="age" style="color:red"/>
+            <h:message for="age" style="color:red; font-size:13px; display:block; margin-bottom:15px;"/>
 
-            <!-- Submit Button -->
+            <!-- ✅ SUBMIT BUTTON -->
             <h:commandButton value="Submit Registration"
                              action="#{studentBean.saveStudent}"
                              style="background:#4CAF50;color:white;padding:10px 20px;
-                                    border:none;border-radius:6px;width:100%;font-weight:600;
-                                    cursor:pointer;"/>
+                        border:none;border-radius:6px;width:100%;font-weight:600;
+                        margin-top:10px;"/>
             <br/><br/>
 
-            <!-- Back Link -->
-            <h:commandLink value="← Back to Home"
-                           action="welcome.xhtml?faces-redirect=true"
-                           style="color:#667eea;text-decoration:none;display:block;text-align:center;"/>
+            <!-- ✅ BACK TO HOME BUTTON (fixed) -->
+            <h:commandButton value="← Back to Home"
+                             action="welcome?faces-redirect=true"
+                             immediate="true"
+                             style="background:#667eea;color:white;padding:8px 20px;
+                        border:none;border-radius:6px;width:100%;
+                        font-weight:600;cursor:pointer;"/>
         </h:form>
+
     </div>
 </h:body>
 </html>
