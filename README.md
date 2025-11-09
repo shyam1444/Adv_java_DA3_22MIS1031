@@ -7,7 +7,7 @@ This project is an Advanced Java application that demonstrates various Java EE t
 - Java 17
 - JavaServer Faces (JSF) 2.3
 - Maven for dependency management
-- Apache Tomcat 9.0+ (or compatible servlet container)
+- Apache Tomcat 10.1.48
 - XHTML for view templates
 - CSS/JavaScript for frontend
 
@@ -27,12 +27,6 @@ src/
     └── java/          # Test source files
 ```
 
-## Prerequisites
-- Java Development Kit (JDK) 8 or later
-- Apache Maven 3.6.0 or later
-- Apache Tomcat 9.0 or later
-- Your preferred IDE (Eclipse, IntelliJ IDEA, etc.)
-
 ## Building the Project
 1. Clone the repository
 2. Navigate to the project root directory
@@ -45,26 +39,11 @@ src/
 ## Running the Application
 1. Start your Tomcat server
 2. Deploy the application
-3. Access the application at: `http://localhost:8080/DA3_AdvJava`
+3. Access the application at: `http://localhost:8080/StudentAdmissionPortal/welcome.xhtml`
 
 ## Configuration
 - Application configuration can be found in `src/main/webapp/WEB-INF/web.xml`
 - Facelets configuration is in `src/main/webapp/WEB-INF/faces-config.xml`
-
-## Testing
-The project includes JUnit 5 test cases with:
-- Nested test classes
-- Parameterized tests
-- Exception testing
-- Mocking with Mockito
-- Fluent assertions with AssertJ
-
-## Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
 
 ## Author
 Shyam Venkatraman, 22MIS1031
