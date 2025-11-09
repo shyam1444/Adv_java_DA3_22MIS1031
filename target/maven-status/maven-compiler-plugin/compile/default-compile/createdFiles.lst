@@ -1,0 +1,3 @@
+com\studentportal\model\Student.class
+com\studentportal\bean\StudentBean.class
+com\studentportal\dao\StudentDAO.class
