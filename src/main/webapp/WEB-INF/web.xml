@@ -5,29 +5,39 @@
                              https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
 
+    <!-- JSF Development Mode -->
     <context-param>
         <param-name>jakarta.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
 
+    <!-- Use server-side state saving -->
     <context-param>
         <param-name>jakarta.faces.STATE_SAVING_METHOD</param-name>
         <param-value>server</param-value>
     </context-param>
 
+    <!-- Handle expired session (redirect to welcome.xhtml) -->
     <error-page>
         <exception-type>jakarta.faces.application.ViewExpiredException</exception-type>
         <location>/welcome.xhtml</location>
     </error-page>
 
+    <!-- JSF Servlet -->
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <!-- JSF URL mapping -->
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>/welcome.xhtml</welcome-file>
+    </welcome-file-list>
+
 </web-app>
