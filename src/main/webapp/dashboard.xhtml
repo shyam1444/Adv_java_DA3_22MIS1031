@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+<h:head>
+    <title>Student Dashboard</title>
+</h:head>
+
+<h:body style="font-family:'Segoe UI',sans-serif;background:#f5f7fa;padding:20px;">
+    <div style="max-width:1200px;margin:auto;">
+        <h1 style="color:#4CAF50;">📊 Student Dashboard</h1>
+
+        <h:form>
+            <h:commandLink value="+ Add New Student"
+                           action="registration.xhtml?faces-redirect=true"
+                           style="display:inline-block;margin-top:10px;
+                                  padding:10px 20px;background:#4CAF50;
+                                  color:white;border-radius:6px;text-decoration:none;"/>
+        </h:form>
+
+        <h:form>
+            <h:dataTable value="#{studentBean.allStudents}" var="student"
+                         style="margin-top:20px;width:100%;border-collapse:collapse;"
+                         border="1" cellpadding="8">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    #{student.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    #{student.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Email</f:facet>
+                    #{student.email}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Phone</f:facet>
+                    #{student.phone}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Age</f:facet>
+                    #{student.age}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Actions</f:facet>
+                    <h:commandLink value="Edit"
+                                   action="#{studentBean.editStudent(student)}"
+                                   style="color:#1976d2;margin-right:10px;text-decoration:none;"/>
+                    <h:commandLink value="Delete"
+                                   action="#{studentBean.deleteStudent(student.id)}"
+                                   onclick="return confirm('Delete this student?');"
+                                   style="color:#d32f2f;text-decoration:none;"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+
+        <p style="margin-top:1rem;color:#666;">Total Students: #{fn:length(studentBean.allStudents)}</p>
+    </div>
+</h:body>
+</html>
