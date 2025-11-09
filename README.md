@@ -4,7 +4,7 @@
 This project is an Advanced Java application that demonstrates various Java EE technologies and best practices. It includes a web-based interface built with JavaServer Faces (JSF) and follows the Model-View-Controller (MVC) architecture pattern.
 
 ## Technologies Used
-- Java 8+
+- Java 17
 - JavaServer Faces (JSF) 2.3
 - Maven for dependency management
 - Apache Tomcat 9.0+ (or compatible servlet container)
