@@ -1,6 +1,6 @@
-# Advanced Java Project
+# Advanced Java DA-3
 
-## Project Overview
+## Assignment Overview
 This project is an Advanced Java application that demonstrates various Java EE technologies and best practices. It includes a web-based interface built with JavaServer Faces (JSF) and follows the Model-View-Controller (MVC) architecture pattern.
 
 ## Technologies Used
